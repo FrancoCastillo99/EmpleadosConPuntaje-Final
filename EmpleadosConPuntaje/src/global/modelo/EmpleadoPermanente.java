@@ -1,10 +1,10 @@
-package global;
+package global.modelo;
 
 import javax.swing.*;
 import java.util.*;
 import java.time.LocalDate;
 
-public class EmpleadoPermanente extends Empleado{
+public class EmpleadoPermanente extends Empleado {
     private ArrayList<Curso> realiza;
     private int puntosAcumulados;
     public EmpleadoPermanente(String nombre, String direccion, int telefono, int empleadoDni) {
@@ -97,5 +97,10 @@ public class EmpleadoPermanente extends Empleado{
         sueldo.calcularIncentivo(this);
 
         return sueldo.getSueldoBase() + sueldo.getIncentivo();
+    }
+
+    @Override
+    public String toString() {
+        return getNombre() + " - \tPuntos: " + getPuntosAcumulados();
     }
 }

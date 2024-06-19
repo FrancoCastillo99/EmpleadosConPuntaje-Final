@@ -1,4 +1,4 @@
-package global;
+package global.modelo;
 
 
 public abstract class Empleado {

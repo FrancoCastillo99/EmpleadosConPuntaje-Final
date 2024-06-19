@@ -1,4 +1,4 @@
-package global;
+package global.modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

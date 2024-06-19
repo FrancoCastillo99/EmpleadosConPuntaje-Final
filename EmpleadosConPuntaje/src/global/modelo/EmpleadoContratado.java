@@ -1,10 +1,10 @@
-package global;
+package global.modelo;
 
 
 import java.time.LocalDate;
 
 
-public class EmpleadoContratado extends Empleado{
+public class EmpleadoContratado extends Empleado {
     private String funcion;
     private LocalDate fechaVencimiento;
 

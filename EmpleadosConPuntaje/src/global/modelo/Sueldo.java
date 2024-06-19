@@ -1,5 +1,4 @@
-package global;
-
+package global.modelo;
 
 public class Sueldo {
     private int empleadoDni;
