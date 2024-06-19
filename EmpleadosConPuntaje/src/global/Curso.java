@@ -1,19 +1,19 @@
 package global;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Curso {
     private int codigo;
     private String titulo;
     private int cargaHoraria;
     private int puntos;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private ArrayList<Curso> cursosPrevios;
     private ArrayList<Empleado> estudiantes;
 
-    public Curso(int codigo, String titulo, int cargaHoraria, int puntos, Date fechaInicio, Date fechaFin) {
+    public Curso(int codigo, String titulo, int cargaHoraria, int puntos, LocalDate fechaInicio, LocalDate fechaFin) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.cargaHoraria = cargaHoraria;
@@ -72,19 +72,19 @@ public class Curso {
         this.puntos = puntos;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 

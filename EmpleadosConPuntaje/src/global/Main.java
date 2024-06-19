@@ -1,18 +1,19 @@
 package global;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class Main {
     public static void main(String[] args) {
-        Curso c1 = new Curso(100, "Finanzas", 10, 50, new Date(),new Date());
-        Curso c2 = new Curso(101, "Social", 5,15, new Date(),new Date());
-        Curso c3 = new Curso(102, "Finanzas 2", 20, 65, new Date(),new Date());
+        Curso c1 = new Curso(100, "Finanzas", 10, 50, LocalDate.of(2024,3,1), LocalDate.now());
+        Curso c2 = new Curso(101, "Social", 5,15, LocalDate.now(), LocalDate.now());
+        Curso c3 = new Curso(102, "Finanzas 2", 20, 65, LocalDate.now(), LocalDate.now());
 
         c3.addCursosPrevios(c1);
 
         EmpleadoPermanente ep1 = new EmpleadoPermanente("Franco","Soler 591", 2612099, 41699948);
-        EmpleadoPermanente ep2 = new EmpleadoPermanente("Liones", "SiempreViva 145", 2613147, 38457632);
+        EmpleadoPermanente ep2 = new EmpleadoPermanente("Lionel", "SiempreViva 145", 2613147, 38457632);
 
         ArrayList<EmpleadoPermanente> permanentes = new ArrayList<>();
         permanentes.add(ep1);

@@ -1,13 +1,14 @@
 package global;
 
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class EmpleadoContratado extends Empleado{
     private String funcion;
-    private Date fechaVencimiento;
+    private LocalDate fechaVencimiento;
 
-    public EmpleadoContratado(String nombre, String direccion, int telefono, int empleadoDni, String funcion, Date fechaVencimiento) {
+    public EmpleadoContratado(String nombre, String direccion, int telefono, int empleadoDni, String funcion, LocalDate fechaVencimiento) {
         super(nombre, direccion, telefono, empleadoDni);
         this.funcion = funcion;
         this.fechaVencimiento = fechaVencimiento;
@@ -21,11 +22,11 @@ public class EmpleadoContratado extends Empleado{
         this.funcion = funcion;
     }
 
-    public Date getFechaVencimiento() {
+    public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
 
@@ -36,10 +37,9 @@ public class EmpleadoContratado extends Empleado{
         setSueldo(sueldo);
     }
 
-    @Override
     public float importeBruto() {
-        Date currentDate = new Date();
-        if (fechaVencimiento != null && fechaVencimiento.before(currentDate)) {
+        LocalDate currentDate = LocalDate.now();
+        if (fechaVencimiento != null && fechaVencimiento.isBefore(currentDate)) {
             return 0; // No se liquida sueldo si el contrato ha vencido
         }
         return getSueldo().getSueldoBase();

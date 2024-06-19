@@ -1,6 +1,8 @@
 package global;
 
+import javax.swing.*;
 import java.util.*;
+import java.time.LocalDate;
 
 public class EmpleadoPermanente extends Empleado{
     private ArrayList<Curso> realiza;
@@ -36,7 +38,7 @@ public class EmpleadoPermanente extends Empleado{
 
             curso.addEstudiante(this);
         }else {
-            System.out.println("El curso [" + curso.getTitulo() + "] tiene requisitos previos que el empleado [" + this.getNombre() + "] no cumple\n");
+            JOptionPane.showMessageDialog(null,"El curso [" + curso.getTitulo() + "] tiene requisitos previos que el empleado [" + this.getNombre() + "] no cumple");
         }
     }
 
@@ -51,25 +53,18 @@ public class EmpleadoPermanente extends Empleado{
 
             curso.addEstudiante(this);
         }else {
-            System.out.println("El curso [" + curso.getTitulo() + "] tiene requisitos previos que el empleado [" + this.getNombre() + "] no cumple\n");
+            JOptionPane.showMessageDialog(null,"El curso [" + curso.getTitulo() + "] tiene requisitos previos que el empleado [" + this.getNombre() + "] no cumple");
         }
     }
+
     public void sumarPuntos() {
+        LocalDate now = LocalDate.now();
         puntosAcumulados = 0;
-        Date currentDate = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(currentDate);
-        int currentMonth = cal.get(Calendar.MONTH);
-        int currentYear = cal.get(Calendar.YEAR);
-
         for (Curso c : realiza) {
-            Calendar startCal = Calendar.getInstance();
-            startCal.setTime(c.getFechaInicio());
-            Calendar endCal = Calendar.getInstance();
-            endCal.setTime(c.getFechaFin());
-
-            if ((startCal.get(Calendar.MONTH) == currentMonth && startCal.get(Calendar.YEAR) == currentYear) ||
-                    (endCal.get(Calendar.MONTH) == currentMonth && endCal.get(Calendar.YEAR) == currentYear)) {
+            LocalDate inicio = c.getFechaInicio();
+            LocalDate fin = c.getFechaFin();
+            if ((inicio.getMonth() == now.getMonth() && inicio.getYear() == now.getYear()) ||
+                    (fin.getMonth() == now.getMonth() && fin.getYear() == now.getYear())) {
                 puntosAcumulados += c.getPuntos();
             }
         }
