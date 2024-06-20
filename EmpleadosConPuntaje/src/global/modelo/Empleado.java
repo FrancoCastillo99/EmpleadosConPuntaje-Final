@@ -11,6 +11,9 @@ public abstract class Empleado implements Serializable {
     private int empleadoDni;
     private Sueldo sueldo;
 
+    public Empleado() {
+    }
+
     public Empleado(String nombre, String direccion, int telefono, int empleadoDni) {
         this.nombre = nombre;
         this.direccion = direccion;

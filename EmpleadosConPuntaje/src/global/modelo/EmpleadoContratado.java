@@ -9,6 +9,9 @@ public class EmpleadoContratado extends Empleado {
     private String funcion;
     private LocalDate fechaVencimiento;
 
+    public EmpleadoContratado() {
+    }
+
     public EmpleadoContratado(String nombre, String direccion, int telefono, int empleadoDni, String funcion, LocalDate fechaVencimiento) {
         super(nombre, direccion, telefono, empleadoDni);
         this.funcion = funcion;
@@ -44,5 +47,11 @@ public class EmpleadoContratado extends Empleado {
             return 0; // No se liquida sueldo si el contrato ha vencido
         }
         return getSueldo().getSueldoBase();
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +
+                "  |  Vencimiento Contrato: " + fechaVencimiento + "  |  Función: " + funcion + "  |  Sueldo: " + getSueldo().getSueldoBase();
     }
 }

@@ -30,7 +30,7 @@ public class VistaCurso extends JFrame {
 
     public VistaCurso(){
         setTitle("Curso");
-        setSize(500, 300);
+        setSize(950, 400);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -106,5 +106,13 @@ public class VistaCurso extends JFrame {
         for (Curso curso : cursos) {
             listaModelo.addElement(curso.toString());
         }
+    }
+    public void limpiarCampos() {
+        textCurso.setText("");
+        textCodigo.setText("");
+        textcargaHoraria.setText("");
+        textPuntos.setText("");
+        textFechaInicio.setText("");
+        textFechaFin.setText("");
     }
 }

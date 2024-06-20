@@ -26,6 +26,8 @@ public class ControladorCurso {
                 curso.setPuntos(vista.getPuntos());
                 cursosList.add(curso);
                 Persistencia.guardarLista(cursosList,"Cursos.ser");
+
+                vista.limpiarCampos();
             }
         });
 
