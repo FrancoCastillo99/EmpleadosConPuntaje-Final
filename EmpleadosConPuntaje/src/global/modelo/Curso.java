@@ -1,9 +1,11 @@
 package global.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Curso {
+public class Curso implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int codigo;
     private String titulo;
     private int cargaHoraria;
@@ -12,6 +14,9 @@ public class Curso {
     private LocalDate fechaFin;
     private ArrayList<Curso> cursosPrevios;
     private ArrayList<Empleado> estudiantes;
+
+    public Curso() {
+    }
 
     public Curso(int codigo, String titulo, int cargaHoraria, int puntos, LocalDate fechaInicio, LocalDate fechaFin) {
         this.codigo = codigo;
@@ -100,4 +105,9 @@ public class Curso {
         this.estudiantes.add(estudiante);
     }
 
+    @Override
+    public String toString() {
+        return "Curso: " + titulo + "  |  Codigo: " + codigo + "  |  Carga Horaria: " + cargaHoraria + "  |  Puntos: " + puntos +
+                "  |  Fecha Inicio: " + fechaInicio + "  |  Fecha Fin: " + fechaFin;
+    }
 }

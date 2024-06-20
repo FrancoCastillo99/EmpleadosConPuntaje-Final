@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 
 public class EmpleadoContratado extends Empleado {
+    private static final long serialVersionUID = 1L;
     private String funcion;
     private LocalDate fechaVencimiento;
 

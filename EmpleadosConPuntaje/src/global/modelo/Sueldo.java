@@ -1,6 +1,9 @@
 package global.modelo;
 
-public class Sueldo {
+import java.io.Serializable;
+
+public class Sueldo implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int empleadoDni;
     private float sueldoBase;
     private float incentivo;

@@ -5,6 +5,7 @@ import java.util.*;
 import java.time.LocalDate;
 
 public class EmpleadoPermanente extends Empleado {
+    private static final long serialVersionUID = 1L;
     private ArrayList<Curso> realiza;
     private int puntosAcumulados;
     public EmpleadoPermanente(String nombre, String direccion, int telefono, int empleadoDni) {

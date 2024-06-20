@@ -1,7 +1,10 @@
 package global.modelo;
 
 
-public abstract class Empleado {
+import java.io.Serializable;
+
+public abstract class Empleado implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String nombre;
     private String direccion;
     private int telefono;
