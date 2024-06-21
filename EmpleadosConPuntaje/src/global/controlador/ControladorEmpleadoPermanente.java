@@ -86,7 +86,7 @@ public class ControladorEmpleadoPermanente {
                     ControladorSeleccionCurso controladorSeleccion = new ControladorSeleccionCurso(dialog, empleadoPermanenteSeleccionado, cursosList,empleadosPermanentes);
                     dialog.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(vista, "Selecciona un empleado para quqe realice un curso.");
+                    JOptionPane.showMessageDialog(vista, "Selecciona un empleado para que realice un curso.");
                 }
                 vista.actualizarLista(empleadosPermanentes);
             }
