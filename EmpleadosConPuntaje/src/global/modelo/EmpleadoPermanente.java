@@ -8,6 +8,11 @@ public class EmpleadoPermanente extends Empleado {
     private static final long serialVersionUID = 1L;
     private ArrayList<Curso> realiza;
     private int puntosAcumulados;
+
+    public EmpleadoPermanente() {
+        realiza = new ArrayList<>();
+    }
+
     public EmpleadoPermanente(String nombre, String direccion, int telefono, int empleadoDni) {
         super(nombre, direccion, telefono, empleadoDni);
         this.realiza = new ArrayList<>();
@@ -43,7 +48,7 @@ public class EmpleadoPermanente extends Empleado {
         }
     }
 
-    public void addCurso(Curso curso) { //Debe recibir parametros para crear la clase sueldo
+    public void addCurso(Curso curso) {
         if (puedeRealizarCurso(curso)){
             if(this.realiza == null)
                 this.realiza = new ArrayList<Curso>();
@@ -99,9 +104,26 @@ public class EmpleadoPermanente extends Empleado {
 
         return sueldo.getSueldoBase() + sueldo.getIncentivo();
     }
+    public void definirSueldo(float sueldoBase){
+        int dni = getEmpleadoDni();
+        Sueldo sueldo = new Sueldo(dni, sueldoBase);
+        sueldo.setIncentivo(0);
+        setSueldo(sueldo);
+    }
+    public String mostrarCursosPrevios() {
+        if (realiza == null || realiza.isEmpty()) {
+            return "No ha realizado ningun curso.";
+        }
+        StringBuilder total = new StringBuilder();
+        for (Curso curso : realiza) {
+            total.append(curso.getTitulo()).append(" ");
+        }
+        return total.toString().trim();
+    }
 
     @Override
     public String toString() {
-        return getNombre() + " - \tPuntos: " + getPuntosAcumulados();
+        return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +
+                "  |  Puntos: " + puntosAcumulados +"  |  Sueldo: $" + importeBruto() + "  |  Cursos realizados: " + mostrarCursosPrevios();
     }
 }

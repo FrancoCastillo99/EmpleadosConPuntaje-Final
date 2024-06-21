@@ -1,8 +1,6 @@
 package global.controlador;
 
-import global.modelo.Curso;
 import global.modelo.EmpleadoContratado;
-import global.modelo.EmpleadoPermanente;
 import global.modelo.Persistencia;
 import global.vista.VistaEmpleadoContratado;
 

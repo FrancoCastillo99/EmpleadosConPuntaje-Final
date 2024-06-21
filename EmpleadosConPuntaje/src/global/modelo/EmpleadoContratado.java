@@ -52,6 +52,6 @@ public class EmpleadoContratado extends Empleado {
     @Override
     public String toString() {
         return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +
-                "  |  Vencimiento Contrato: " + fechaVencimiento + "  |  Función: " + funcion + "  |  Sueldo: " + getSueldo().getSueldoBase();
+                "  |  Vencimiento Contrato: " + fechaVencimiento + "  |  Función: " + funcion + "  |  Sueldo: $" + getSueldo().getSueldoBase();
     }
 }

@@ -16,6 +16,8 @@ public class Curso implements Serializable {
     private ArrayList<Empleado> estudiantes;
 
     public Curso() {
+        cursosPrevios = new ArrayList<>();
+        estudiantes = new ArrayList<>();
     }
 
     public Curso(int codigo, String titulo, int cargaHoraria, int puntos, LocalDate fechaInicio, LocalDate fechaFin) {
@@ -108,6 +110,17 @@ public class Curso implements Serializable {
     @Override
     public String toString() {
         return "Curso: " + titulo + "  |  Codigo: " + codigo + "  |  Carga Horaria: " + cargaHoraria + "  |  Puntos: " + puntos +
-                "  |  Fecha Inicio: " + fechaInicio + "  |  Fecha Fin: " + fechaFin;
+                "  |  Fecha Inicio: " + fechaInicio + "  |  Fecha Fin: " + fechaFin + "  |  Cursos necesarios: " + mostrarCursosPrevios();
+    }
+
+    public String mostrarCursosPrevios() {
+        if (cursosPrevios == null || cursosPrevios.isEmpty()) {
+            return "No requiere cursos previos.";
+        }
+        StringBuilder total = new StringBuilder();
+        for (Curso curso : cursosPrevios) {
+            total.append(curso.getTitulo()).append(" ");
+        }
+        return total.toString().trim();
     }
 }

@@ -1,7 +1,7 @@
 package global.vista;
 
 import global.modelo.Curso;
-import global.modelo.EmpleadoPermanente;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +25,8 @@ public class VistaCurso extends JFrame {
     private JTextField textcargaHoraria = new JTextField(10);
     private JButton btnGuardar;
     private JButton btnMostrar;
+    private JButton btnEditar;
+    private JButton btnAgregarCursoPrevio;
     private JList<String> cursos = new JList<>();
     private DefaultListModel<String> listaModelo = new DefaultListModel<>();
 
@@ -63,8 +65,13 @@ public class VistaCurso extends JFrame {
         JPanel botones = new JPanel();
         btnGuardar = new JButton("Guardar");
         btnMostrar = new JButton("Mostrar");
+        btnEditar = new JButton("Editar");
+        btnAgregarCursoPrevio = new JButton("Agregar Curso Previo");
+
         botones.add(btnGuardar);
         botones.add(btnMostrar);
+        botones.add(btnEditar);
+        botones.add(btnAgregarCursoPrevio);
 
         add(botones, BorderLayout.EAST);
 
@@ -74,6 +81,14 @@ public class VistaCurso extends JFrame {
 
     public JButton getBtnGuardar() {
         return btnGuardar;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public JButton getBtnAgregarCursoPrevio() {
+        return btnAgregarCursoPrevio;
     }
 
     public String getNombre(){
@@ -114,5 +129,18 @@ public class VistaCurso extends JFrame {
         textPuntos.setText("");
         textFechaInicio.setText("");
         textFechaFin.setText("");
+    }
+    public JList<String> getListaCursos() {
+        return cursos;
+    }
+
+    public void cargarCurso(Curso curso) {
+        textCurso.setText(curso.getTitulo());
+        textCodigo.setText(String.valueOf(curso.getCodigo()));
+        textcargaHoraria.setText(String.valueOf(curso.getCargaHoraria()));
+        textPuntos.setText(String.valueOf(curso.getPuntos()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        textFechaInicio.setText(curso.getFechaInicio().format(formatter));
+        textFechaFin.setText(curso.getFechaFin().format(formatter));
     }
 }

@@ -1,8 +1,5 @@
 package global.controlador;
-import global.vista.VistaCurso;
-import global.vista.VistaEmpleadoContratado;
-import global.vista.VistaMejoresPuntajes;
-import global.vista.VistaPrincipal;
+import global.vista.*;
 import global.modelo.*;
 
 import java.awt.event.ActionEvent;
@@ -61,6 +58,15 @@ public class ControladorPrincipal {
                 VistaEmpleadoContratado vistaEmpleadoContratado = new VistaEmpleadoContratado();
                 ControladorEmpleadoContratado controladorEmpleadoContratado = new ControladorEmpleadoContratado(vistaEmpleadoContratado);
                 vistaEmpleadoContratado.setVisible(true);
+            }
+        });
+
+        vista.getBtnEmpleadoPermantente().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VistaEmpleadoPermanente vistaEmpleadoPermanente = new VistaEmpleadoPermanente();
+                ControladorEmpleadoPermanente controladorEmpleadoPermanente = new ControladorEmpleadoPermanente(vistaEmpleadoPermanente);
+                vistaEmpleadoPermanente.setVisible(true);
             }
         });
     }
