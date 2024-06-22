@@ -7,6 +7,7 @@ import global.vista.VistaSeleccionCursosPrevios;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +27,37 @@ public class ControladorCurso {
         vista.getBtnGuardar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Validación del nombre
+                String nombre = vista.getNombre();
+                if (nombre == null) return; // Termina la ejecución si el nombre no es válido
+
+                // Validación del código
+                int codigo = vista.getCodigo();
+                if (codigo == -1) return; // Termina la ejecución si el código no es válido
+
+                // Validación de la carga horaria
+                int carga = vista.getCarga();
+                if (carga == -1) return; // Termina la ejecución si la carga horaria no es válida
+
+                // Validación de los puntos
+                int puntos = vista.getPuntos();
+                if (puntos == -1) return; // Termina la ejecución si los puntos no son válidos
+
+                // Validación de la fecha de inicio
+                LocalDate fechaInicio = vista.getFechaInicio();
+                if (fechaInicio == null) return; // Termina la ejecución si la fecha de inicio no es válida
+
+                // Validación de la fecha de fin
+                LocalDate fechaFin = vista.getFechaFin();
+                if (fechaFin == null) return; // Termina la ejecución si la fecha de fin no es válida
+
                 Curso curso = new Curso();
-                curso.setTitulo(vista.getNombre());
-                curso.setCodigo(vista.getCodigo());
-                curso.setCargaHoraria(vista.getCarga());
-                curso.setFechaInicio(vista.getFechaInicio());
-                curso.setFechaFin(vista.getFechaFin());
-                curso.setPuntos(vista.getPuntos());
+                curso.setTitulo(nombre);
+                curso.setCodigo(codigo);
+                curso.setCargaHoraria(carga);
+                curso.setPuntos(puntos);
+                curso.setFechaInicio(fechaInicio);
+                curso.setFechaFin(fechaFin);
 
                 if (selectedIndex == -1) {
                     // Añadir nuevo curso

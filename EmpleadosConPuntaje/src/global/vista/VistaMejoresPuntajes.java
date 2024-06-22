@@ -29,7 +29,7 @@ public class VistaMejoresPuntajes extends JFrame{
     public void actualizarLista(List<EmpleadoPermanente> empleados) {
         listaModelo.clear();
         for (EmpleadoPermanente empleadoPermanente : empleados) {
-            listaModelo.addElement(empleadoPermanente.toString());
+            listaModelo.addElement(empleadoPermanente.mejores());
         }
     }
 }

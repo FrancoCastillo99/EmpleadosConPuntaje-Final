@@ -126,4 +126,8 @@ public class EmpleadoPermanente extends Empleado {
         return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +
                 "  |  Puntos: " + puntosAcumulados +"  |  Sueldo: $" + importeBruto() + "  |  Cursos realizados: " + mostrarCursosPrevios();
     }
+
+    public String mejores(){
+        return "Nombre: " + getNombre() + "  |  Puntos: " + puntosAcumulados;
+    }
 }

@@ -84,21 +84,40 @@ public class VistaEmpleadoPermanente extends JFrame {
         return btnRealizarCurso;
     }
 
-    public String getNombre(){
-        return textNombre.getText();
+    public String getNombre() {
+        String nombre = textNombre.getText();
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) { // Verifica que el nombre solo contenga letras y espacios
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre válido que contenga solo letras.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
+        return nombre;
     }
-    public int getDni(){
-        return Integer.parseInt(textDni.getText());
+    public int getDni() {
+        try {
+            return Integer.parseInt(textDni.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el DNI.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
     public String getDireccion(){
         return textDireccion.getText();
     }
-    public int getTelefono(){
-        return Integer.parseInt(textTelefono.getText());
+    public int getTelefono() {
+        try {
+            return Integer.parseInt(textTelefono.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el Telefono.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
-
-    public float getSueldo(){
-        return Float.parseFloat(textSueldo.getText());
+    public float getSueldo() {
+        try {
+            return Float.parseFloat(textSueldo.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el sueldo.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
 
     public JButton getBtnMostrar() {

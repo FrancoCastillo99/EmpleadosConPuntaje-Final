@@ -7,6 +7,7 @@ import global.vista.VistaEmpleadoContratado;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ControladorEmpleadoContratado {
@@ -26,14 +27,38 @@ public class ControladorEmpleadoContratado {
         vista.getBtnGuardar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Validación del DNI
+                int dni = vista.getDni();
+                if (dni == -1) return; // Termina la ejecución si el DNI no es válido
+
+                // Validación del nombre
+                String nombre = vista.getNombre();
+                if (nombre == null) return; // Termina la ejecución si el nombre no es válido
+
+                // Validación del Telefono
+                int telefono = vista.getTelefono();
+                if (telefono == -1) return; // Termina la ejecución si el Telefono no es válido
+
+                // Validación del funcion
+                String funcion = vista.getFuncion();
+                if (funcion == null) return; // Termina la ejecución si el funcion no es válido
+
+                // Validación del sueldo
+                float sueldo = vista.getSueldo();
+                if (sueldo == -1) return; // Termina la ejecución si el sueldo no es válido
+
+                // Validación de la fecha de inicio
+                LocalDate fechaVencimiento = vista.getFechaContrato();
+                if (fechaVencimiento == null) return; // Termina la ejecución si la fecha de inicio no es válida
+
                 EmpleadoContratado empleado = new EmpleadoContratado();
-                empleado.setNombre(vista.getNombre());
-                empleado.setEmpleadoDni(vista.getDni());
+                empleado.setNombre(nombre);
+                empleado.setEmpleadoDni(dni);
                 empleado.setDireccion(vista.getDireccion());
-                empleado.setTelefono(vista.getTelefono());
-                empleado.setFechaVencimiento(vista.getFechaContrato());
-                empleado.setFuncion(vista.getFuncion());
-                empleado.definirSueldo(vista.getSueldo());
+                empleado.setTelefono(telefono);
+                empleado.setFechaVencimiento(fechaVencimiento);
+                empleado.setFuncion(funcion);
+                empleado.definirSueldo(sueldo);
 
                 if (selectedIndex == -1) {
                     // Añadir nuevo empleado

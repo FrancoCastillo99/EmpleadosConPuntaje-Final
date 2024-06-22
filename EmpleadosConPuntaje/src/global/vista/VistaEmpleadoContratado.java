@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class VistaEmpleadoContratado extends JFrame {
@@ -86,32 +87,63 @@ public class VistaEmpleadoContratado extends JFrame {
     public JButton getBtnEditar() {
         return btnEditar;
     }
-
-    public String getNombre(){
-        return textNombre.getText();
+    public JButton getBtnMostrar() {
+        return btnMostrar;
     }
-    public int getDni(){
-        return Integer.parseInt(textDni.getText());
+
+    public String getNombre() {
+        String nombre = textNombre.getText();
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) { // Verifica que el nombre solo contenga letras y espacios
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre válido que contenga solo letras.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
+        return nombre;
+    }
+    public int getDni() {
+        try {
+            return Integer.parseInt(textDni.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el DNI.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
     public String getDireccion(){
         return textDireccion.getText();
     }
-    public int getTelefono(){
-        return Integer.parseInt(textTelefono.getText());
+
+    public int getTelefono() {
+        try {
+            return Integer.parseInt(textTelefono.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el Telefono.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
-    public LocalDate getFechaContrato(){
+    public LocalDate getFechaContrato() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(textFechaContrato.getText(),formatter);
-    }
-    public String getFuncion(){
-        return textFuncion.getText();
-    }
-    public float getSueldo(){
-        return Float.parseFloat(textSueldo.getText());
+        try {
+            return LocalDate.parse(textFechaContrato.getText(), formatter);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha válida en formato dd/MM/yyyy.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
     }
 
-    public JButton getBtnMostrar() {
-        return btnMostrar;
+    public String getFuncion() {
+        String funcion = textFuncion.getText();
+        if (!funcion.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) { // Verifica que el nombre solo contenga letras y espacios
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una funcion válida que contenga solo letras.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
+        return funcion;
+    }
+    public float getSueldo() {
+        try {
+            return Float.parseFloat(textSueldo.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el sueldo.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
 
     public void actualizarLista(List<EmpleadoContratado> empleados) {

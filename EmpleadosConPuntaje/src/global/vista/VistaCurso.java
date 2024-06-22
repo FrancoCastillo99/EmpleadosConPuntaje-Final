@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class VistaCurso extends JFrame {
@@ -91,25 +92,56 @@ public class VistaCurso extends JFrame {
         return btnAgregarCursoPrevio;
     }
 
-    public String getNombre(){
-        return textCurso.getText();
+    public String getNombre() {
+        String nombre = textCurso.getText();
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) { // Verifica que el nombre solo contenga letras y espacios
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre válido que contenga solo letras.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
+        return nombre;
     }
-    public int getCodigo(){
-        return Integer.parseInt(textCodigo.getText());
+    public int getCodigo() {
+        try {
+            return Integer.parseInt(textCodigo.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para el Codigo.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
-    public int getCarga(){
-        return Integer.parseInt(textcargaHoraria.getText());
+    public int getCarga() {
+        try {
+            return Integer.parseInt(textcargaHoraria.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para la carga horaria.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
-    public int getPuntos(){
-        return Integer.parseInt(textPuntos.getText());
+    public int getPuntos() {
+        try {
+            return Integer.parseInt(textPuntos.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido para los puntos.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return -1; // Indicador de error
+        }
     }
-    public LocalDate getFechaInicio(){
+
+    public LocalDate getFechaInicio() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(textFechaInicio.getText(),formatter);
+        try {
+            return LocalDate.parse(textFechaInicio.getText(), formatter);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha válida en formato dd/MM/yyyy.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
     }
-    public LocalDate getFechaFin(){
+    public LocalDate getFechaFin() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(textFechaFin.getText(),formatter);
+        try {
+            return LocalDate.parse(textFechaFin.getText(), formatter);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha válida en formato dd/MM/yyyy.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            return null; // Indicador de error
+        }
     }
 
     public JButton getBtnMostrar() {
