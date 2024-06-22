@@ -121,6 +121,15 @@ public class EmpleadoPermanente extends Empleado {
         return total.toString().trim();
     }
 
+    public static boolean empleadoPermanenteDuplicado(ArrayList<EmpleadoPermanente> empleadoPermanentes, int dni) {
+        for (EmpleadoPermanente empleado : empleadoPermanentes) {
+            if (empleado.getEmpleadoDni() == dni) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +

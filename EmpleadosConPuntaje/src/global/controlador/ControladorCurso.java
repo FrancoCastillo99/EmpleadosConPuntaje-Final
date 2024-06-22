@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControladorCurso {
     private VistaCurso vista;
@@ -34,6 +33,12 @@ public class ControladorCurso {
                 // Validación del código
                 int codigo = vista.getCodigo();
                 if (codigo == -1) return; // Termina la ejecución si el código no es válido
+
+                // Verificar duplicados usando el método estático
+                if (Curso.cursoDuplicado(cursosList, nombre, codigo)) {
+                    JOptionPane.showMessageDialog(vista, "El curso con el nombre o código ya existe.", "Error de Duplicado", JOptionPane.ERROR_MESSAGE);
+                    return; // Termina la ejecución si se encuentra un duplicado
+                }
 
                 // Validación de la carga horaria
                 int carga = vista.getCarga();

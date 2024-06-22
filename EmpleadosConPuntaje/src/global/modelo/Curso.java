@@ -123,4 +123,13 @@ public class Curso implements Serializable {
         }
         return total.toString().trim();
     }
+
+    public static boolean cursoDuplicado(ArrayList<Curso> cursosList, String nombre, int codigo) {
+        for (Curso curso : cursosList) {
+            if (curso.getTitulo().equalsIgnoreCase(nombre) || curso.getCodigo() == codigo) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

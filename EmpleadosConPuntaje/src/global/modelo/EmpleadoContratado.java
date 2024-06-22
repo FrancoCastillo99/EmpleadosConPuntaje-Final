@@ -2,6 +2,7 @@ package global.modelo;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class EmpleadoContratado extends Empleado {
@@ -47,6 +48,14 @@ public class EmpleadoContratado extends Empleado {
             return 0; // No se liquida sueldo si el contrato ha vencido
         }
         return getSueldo().getSueldoBase();
+    }
+    public static boolean empleadoContratadoDuplicado(ArrayList<EmpleadoContratado> empleadoContratados, int dni) {
+        for (EmpleadoContratado empleado : empleadoContratados) {
+            if (empleado.getEmpleadoDni() == dni) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
