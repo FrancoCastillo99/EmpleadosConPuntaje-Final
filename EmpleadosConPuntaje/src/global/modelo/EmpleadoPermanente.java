@@ -121,9 +121,11 @@ public class EmpleadoPermanente extends Empleado {
         return total.toString().trim();
     }
 
-    public static boolean empleadoPermanenteDuplicado(ArrayList<EmpleadoPermanente> empleadoPermanentes, int dni) {
-        for (EmpleadoPermanente empleado : empleadoPermanentes) {
-            if (empleado.getEmpleadoDni() == dni) {
+
+    public static boolean empleadoPermanenteDuplicado(ArrayList<EmpleadoPermanente> empleadoPermanentes, int dni, int currentIndex) {
+        for (int i = 0; i < empleadoPermanentes.size(); i++) {
+            EmpleadoPermanente empleado = empleadoPermanentes.get(i);
+            if (i != currentIndex && empleado.getEmpleadoDni() == dni) {
                 return true;
             }
         }

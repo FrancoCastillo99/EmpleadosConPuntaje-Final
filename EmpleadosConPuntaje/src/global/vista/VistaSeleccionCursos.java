@@ -2,8 +2,6 @@ package global.vista;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import global.modelo.*;
 
@@ -33,16 +31,14 @@ public class VistaSeleccionCursos extends JDialog {
         panelBotones.add(btnCancelar);
         add(panelBotones, BorderLayout.SOUTH);
 
-        btnCancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
     }
 
     public JButton getBtnSeleccionar() {
         return btnSeleccionar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
     }
 
     public JList<String> getListaCursos() {

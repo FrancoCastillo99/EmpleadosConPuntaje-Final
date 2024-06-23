@@ -33,5 +33,12 @@ public class ControladorSeleccionCursosPrevios {
                 vista.dispose();
             }
         });
+
+        vista.getBtnCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vista.dispose();
+            }
+        });
     }
 }

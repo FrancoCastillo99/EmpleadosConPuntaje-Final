@@ -33,16 +33,14 @@ public class VistaSeleccionCursosPrevios extends JDialog {
         panelBotones.add(btnCancelar);
         add(panelBotones, BorderLayout.SOUTH);
 
-        btnCancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
     }
 
     public JButton getBtnSeleccionar() {
         return btnSeleccionar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
     }
 
     public JList<String> getListaCursos() {

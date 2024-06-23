@@ -49,18 +49,18 @@ public class EmpleadoContratado extends Empleado {
         }
         return getSueldo().getSueldoBase();
     }
-    public static boolean empleadoContratadoDuplicado(ArrayList<EmpleadoContratado> empleadoContratados, int dni) {
-        for (EmpleadoContratado empleado : empleadoContratados) {
-            if (empleado.getEmpleadoDni() == dni) {
+    public static boolean empleadoContratadoDuplicado(ArrayList<EmpleadoContratado> empleadoContratados, int dni, int currentIndex) {
+        for (int i = 0; i < empleadoContratados.size(); i++) {
+            EmpleadoContratado empleado = empleadoContratados.get(i);
+            if (i != currentIndex && empleado.getEmpleadoDni() == dni) {
                 return true;
             }
         }
         return false;
     }
-
     @Override
     public String toString() {
         return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +
-                "  |  Vencimiento Contrato: " + fechaVencimiento + "  |  Función: " + funcion + "  |  Sueldo: $" + getSueldo().getSueldoBase();
+                "  |  Vencimiento Contrato: " + fechaVencimiento + "  |  Función: " + funcion + "  |  Sueldo: $" + importeBruto();
     }
 }

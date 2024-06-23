@@ -35,7 +35,7 @@ public class ControladorCurso {
                 if (codigo == -1) return; // Termina la ejecución si el código no es válido
 
                 // Verificar duplicados usando el método estático
-                if (Curso.cursoDuplicado(cursosList, nombre, codigo)) {
+                if (Curso.cursoDuplicado(cursosList, nombre, codigo, selectedIndex)) {
                     JOptionPane.showMessageDialog(vista, "El curso con el nombre o código ya existe.", "Error de Duplicado", JOptionPane.ERROR_MESSAGE);
                     return; // Termina la ejecución si se encuentra un duplicado
                 }

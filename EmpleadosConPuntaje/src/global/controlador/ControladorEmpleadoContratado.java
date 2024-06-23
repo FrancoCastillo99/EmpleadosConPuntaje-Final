@@ -36,7 +36,7 @@ public class ControladorEmpleadoContratado {
                 if (dni == -1) return; // Termina la ejecución si el DNI no es válido
 
                 // Verificar duplicados usando el método estático
-                if (EmpleadoContratado.empleadoContratadoDuplicado(empleadosContratados, dni)) {
+                if (EmpleadoContratado.empleadoContratadoDuplicado(empleadosContratados, dni, selectedIndex)) {
                     JOptionPane.showMessageDialog(vista, "Ya existe un empleado con este DNI.", "Error de Duplicado", JOptionPane.ERROR_MESSAGE);
                     return; // Termina la ejecución si se encuentra un duplicado
                 }

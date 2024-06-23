@@ -1,7 +1,9 @@
 package global.modelo;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Curso implements Serializable {
@@ -95,10 +97,20 @@ public class Curso implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    public void addCursosPrevios(Curso curso){
-        if(this.cursosPrevios == null)
+    private boolean tiempoEntreCrusos(LocalDate endDate, LocalDate startDate) {
+        return ChronoUnit.MONTHS.between(endDate, startDate) <= 2;
+    }
+
+
+    public void addCursosPrevios(Curso curso) {
+        if (this.cursosPrevios == null) {
             this.cursosPrevios = new ArrayList<>();
-        this.cursosPrevios.add(curso);
+        }
+        if (tiempoEntreCrusos(curso.getFechaFin(), this.fechaInicio)) {
+            this.cursosPrevios.add(curso);
+        } else {
+            JOptionPane.showMessageDialog(null, "El curso previo [" + curso.getTitulo() + "] finaliza más de dos meses antes de que inicie el curso actual.");
+        }
     }
 
     public void addEstudiante(Empleado estudiante){
@@ -124,9 +136,10 @@ public class Curso implements Serializable {
         return total.toString().trim();
     }
 
-    public static boolean cursoDuplicado(ArrayList<Curso> cursosList, String nombre, int codigo) {
-        for (Curso curso : cursosList) {
-            if (curso.getTitulo().equalsIgnoreCase(nombre) || curso.getCodigo() == codigo) {
+    public static boolean cursoDuplicado(ArrayList<Curso> cursosList, String nombre, int codigo, int currentIndex) {
+        for (int i = 0; i < cursosList.size(); i++) {
+            Curso curso = cursosList.get(i);
+            if (i != currentIndex && (curso.getTitulo().equalsIgnoreCase(nombre) || curso.getCodigo() == codigo)) {
                 return true;
             }
         }
