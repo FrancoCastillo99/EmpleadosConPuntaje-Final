@@ -27,6 +27,7 @@ public class VistaCurso extends JFrame {
     private JButton btnGuardar;
     private JButton btnMostrar;
     private JButton btnEditar;
+    private JButton btnBorrar;
     private JButton btnAgregarCursoPrevio;
     private JList<String> cursos = new JList<>();
     private DefaultListModel<String> listaModelo = new DefaultListModel<>();
@@ -67,11 +68,13 @@ public class VistaCurso extends JFrame {
         btnGuardar = new JButton("Guardar");
         btnMostrar = new JButton("Mostrar");
         btnEditar = new JButton("Editar");
+        btnBorrar = new JButton("Borrar");
         btnAgregarCursoPrevio = new JButton("Agregar Curso Previo");
 
         botones.add(btnGuardar);
         botones.add(btnMostrar);
         botones.add(btnEditar);
+        botones.add(btnBorrar);
         botones.add(btnAgregarCursoPrevio);
 
         add(botones, BorderLayout.EAST);
@@ -90,6 +93,10 @@ public class VistaCurso extends JFrame {
 
     public JButton getBtnAgregarCursoPrevio() {
         return btnAgregarCursoPrevio;
+    }
+
+    public JButton getBtnBorrar() {
+        return btnBorrar;
     }
 
     public String getNombre() {

@@ -27,6 +27,7 @@ public class VistaEmpleadoContratado extends JFrame {
     private JTextField textSueldo = new JTextField(10);
     private JTextField textFuncion = new JTextField(10);
     private JButton btnGuardar;
+    private JButton btnBorrar;
     private JButton btnMostrar;
     private JButton btnEditar;
     private JList<String> empleados = new JList<>();
@@ -70,9 +71,11 @@ public class VistaEmpleadoContratado extends JFrame {
         btnGuardar = new JButton("Guardar");
         btnMostrar = new JButton("Mostrar");
         btnEditar = new JButton("Editar");
+        btnBorrar = new JButton("Borrar");
         botones.add(btnGuardar);
         botones.add(btnMostrar);
         botones.add(btnEditar);
+        botones.add(btnBorrar);
 
         add(botones, BorderLayout.EAST);
 
@@ -89,6 +92,10 @@ public class VistaEmpleadoContratado extends JFrame {
     }
     public JButton getBtnMostrar() {
         return btnMostrar;
+    }
+
+    public JButton getBtnBorrar() {
+        return btnBorrar;
     }
 
     public String getNombre() {

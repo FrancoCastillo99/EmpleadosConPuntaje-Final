@@ -20,6 +20,7 @@ public class VistaEmpleadoPermanente extends JFrame {
     private JTextField textTelefono = new JTextField(10);
     private JTextField textSueldo = new JTextField(10);
     private JButton btnGuardar;
+    private JButton btnBorrar;
     private JButton btnMostrar;
     private JButton btnEditar;
     private JButton btnRealizarCurso;
@@ -60,10 +61,12 @@ public class VistaEmpleadoPermanente extends JFrame {
         btnGuardar = new JButton("Guardar");
         btnMostrar = new JButton("Mostrar");
         btnEditar = new JButton("Editar");
+        btnBorrar = new JButton("Borrar");
         btnRealizarCurso = new JButton("Realizar curso");
         botones.add(btnGuardar);
         botones.add(btnMostrar);
         botones.add(btnEditar);
+        botones.add(btnBorrar);
         botones.add(btnRealizarCurso);
 
         add(botones, BorderLayout.EAST);
@@ -82,6 +85,10 @@ public class VistaEmpleadoPermanente extends JFrame {
 
     public JButton getBtnRealizarCurso() {
         return btnRealizarCurso;
+    }
+
+    public JButton getBtnBorrar() {
+        return btnBorrar;
     }
 
     public String getNombre() {

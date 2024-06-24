@@ -86,6 +86,24 @@ public class ControladorEmpleadoPermanente {
                 vista.actualizarLista(empleadosPermanentes);
             }
         });
+        vista.getBtnBorrar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedIndex = vista.getListaEmpleados().getSelectedIndex();
+                if (selectedIndex != -1) {
+                    int confirm = JOptionPane.showConfirmDialog(vista, "¿Estás seguro de que deseas borrar el empleado seleccionado?", "Confirmar Borrado", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        empleadosPermanentes.remove(selectedIndex);
+                        Persistencia.guardarLista(empleadosPermanentes, "EmpleadoPermanentes.ser");
+                        vista.actualizarLista(empleadosPermanentes);
+                        vista.limpiarCampos();
+                        selectedIndex = -1;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Selecciona un empleado para borrar.");
+                }
+            }
+        });
         vista.getBtnEditar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,6 +126,7 @@ public class ControladorEmpleadoPermanente {
                     EmpleadoPermanente empleadoPermanenteSeleccionado = empleadosPermanentes.get(selectedIndex);
                     VistaSeleccionCursos dialog = new VistaSeleccionCursos(vista, cursosList);
                     ControladorSeleccionCurso controladorSeleccion = new ControladorSeleccionCurso(dialog, empleadoPermanenteSeleccionado, cursosList,empleadosPermanentes);
+                    selectedIndex = -1;
                     dialog.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(vista, "Selecciona un empleado para que realice un curso.");

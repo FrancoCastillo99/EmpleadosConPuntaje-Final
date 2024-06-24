@@ -81,6 +81,25 @@ public class ControladorEmpleadoContratado {
             }
         });
 
+        vista.getBtnBorrar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedIndex = vista.getListaEmpleados().getSelectedIndex();
+                if (selectedIndex != -1) {
+                    int confirm = JOptionPane.showConfirmDialog(vista, "¿Estás seguro de que deseas borrar el empleado seleccionado?", "Confirmar Borrado", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        empleadosContratados.remove(selectedIndex);
+                        Persistencia.guardarLista(empleadosContratados, "EmpleadoContratados.ser");
+                        vista.actualizarLista(empleadosContratados);
+                        vista.limpiarCampos();
+                        selectedIndex = -1;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Selecciona un empleado para borrar.");
+                }
+            }
+        });
+
         vista.getBtnMostrar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

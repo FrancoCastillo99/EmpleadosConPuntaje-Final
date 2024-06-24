@@ -116,5 +116,23 @@ public class ControladorCurso {
             }
         });
 
+        vista.getBtnBorrar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedIndex = vista.getListaCursos().getSelectedIndex();
+                if (selectedIndex != -1) {
+                    int confirm = JOptionPane.showConfirmDialog(vista, "¿Estás seguro de que deseas borrar el curso seleccionado?", "Confirmar Borrado", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        cursosList.remove(selectedIndex);
+                        Persistencia.guardarLista(cursosList, "Cursos.ser");
+                        vista.actualizarLista(cursosList);
+                        vista.limpiarCampos();
+                        selectedIndex = -1;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Selecciona un curso para borrar.");
+                }
+            }
+        });
     }
 }

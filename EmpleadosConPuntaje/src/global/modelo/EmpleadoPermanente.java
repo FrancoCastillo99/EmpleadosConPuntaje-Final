@@ -115,10 +115,14 @@ public class EmpleadoPermanente extends Empleado {
             return "No ha realizado ningun curso.";
         }
         StringBuilder total = new StringBuilder();
-        for (Curso curso : realiza) {
-            total.append(curso.getTitulo()).append(" ");
+        for (int i = 0; i < realiza.size(); i++) {
+            Curso curso = realiza.get(i);
+            total.append(curso.getTitulo());
+            if (i < realiza.size() - 1) {
+                total.append("-");
+            }
         }
-        return total.toString().trim();
+        return total.toString();
     }
 
 
@@ -135,7 +139,7 @@ public class EmpleadoPermanente extends Empleado {
     @Override
     public String toString() {
         return "Nombre: " + getNombre() + "  |  DNI: " + getEmpleadoDni() + "  |  Dirección: " + getDireccion() + "  |  Telefono: " + getTelefono() +
-                "  |  Puntos: " + puntosAcumulados +"  |  Sueldo: $" + importeBruto() + "  |  Cursos realizados: " + mostrarCursosPrevios();
+                "  |  Puntos: " + puntosAcumulados +"  |  Sueldo: $" + importeBruto() + "  |  Cursos inscripto: " + mostrarCursosPrevios();
     }
 
     public String mejores(){
